@@ -13,11 +13,11 @@ public class Machine {
     }
 
     //read(
-    public void read(){
+    public void read(int i){
 
     }
     //write
-    public void write(){
+    public void write(int location){
 
     }
     //parse
@@ -26,26 +26,26 @@ public class Machine {
     }
 
     //store
-    public void store(){
+    public void store(int location){
 
     }
 
     //add
-    public void add(){
+    public void add(int location1, int location2){
 
     }
 
     //subtract
-    public void subtract(){
+    public void subtract(int location1, int location2){
 
     }
 
     //divide
-    public void divide(){
+    public void divide(int location1, int location2){
 
     }
     //multiply
-    public void multiply(){
+    public void multiply(int location1, int location2){
 
     }
     //branch
