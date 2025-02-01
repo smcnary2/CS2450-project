@@ -8,7 +8,7 @@ public class Machine {
         //while loop
         boolean finished = false;
         while(!finished){
-
+            finished = true; //for testing purposes I've closed this loop until we begin actually developing it (Austin Pendley 2/1/2025)
         }
     }
 
@@ -62,7 +62,7 @@ public class Machine {
 
     }
     //halt
-    public void hault(){
+    public void halt(){
 
     }
 
