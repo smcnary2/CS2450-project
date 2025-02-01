@@ -15,6 +15,15 @@ public class Memory {
         this.wordlist = wordlist;
     }
 
+    //get single word
+    public int getWordSingle(int index){
+        return wordlist[index];
+    }
+
+    //set single word
+    public void setWordSingle(int index, int value){
+        wordlist[index] = value;
+    }
 
     //output
 }
