@@ -1,0 +1,295 @@
+Index: src/Machine.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Machine {\r\n    //constructor: builds memory\r\n    public Machine(){\r\n        var memory = new Memory();\r\n    }\r\n    //run\r\n    public void run(){\r\n        //while loop\r\n        boolean finished = false;\r\n        while(!finished){\r\n\r\n        }\r\n    }\r\n\r\n    //read(\r\n    public void read(int i){\r\n\r\n    }\r\n    //write\r\n    public void write(int location){\r\n\r\n    }\r\n    //parse\r\n    public void parse(String input){\r\n        //convert string to int\r\n    }\r\n\r\n    //store\r\n    public void store(int location){\r\n\r\n    }\r\n\r\n    //add\r\n    public void add(int location1, int location2){\r\n\r\n    }\r\n\r\n    //subtract\r\n    public void subtract(int location1, int location2){\r\n\r\n    }\r\n\r\n    //divide\r\n    public void divide(int location1, int location2){\r\n\r\n    }\r\n    //multiply\r\n    public void multiply(int location1, int location2){\r\n\r\n    }\r\n    //branch\r\n    public void branch(){\r\n\r\n    }\r\n\r\n    //branchneg\r\n    public void branchneg(){\r\n\r\n    }\r\n    //branchzero\r\n    public void branchzero(){\r\n\r\n    }\r\n    //halt\r\n    public void hault(){\r\n\r\n    }\r\n\r\n    //set(only for testing)\r\n    //get(only for testing)\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Machine.java b/src/Machine.java
+--- a/src/Machine.java	(revision 93f841a06f948ab81c7557ba3c76def14b9ed456)
++++ b/src/Machine.java	(date 1738631866705)
+@@ -8,7 +8,7 @@
+         //while loop
+         boolean finished = false;
+         while(!finished){
+-
++            finished = true; //for testing purposes I've closed this loop until we begin actually developing it (Austin Pendley 2/1/2025)
+         }
+     }
+ 
+@@ -62,7 +62,7 @@
+ 
+     }
+     //halt
+-    public void hault(){
++    public void halt(){
+ 
+     }
+ 
+Index: src/Memory.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Memory {\r\n    //array(int)\r\n    private int[] wordlist;\r\n    public Memory() {\r\n        wordlist = new int[100];\r\n    }\r\n\r\n    //set\r\n    public int[] getWordlist() {\r\n        return wordlist;\r\n    }\r\n\r\n    //get\r\n    public void setWordlist(int[] wordlist) {\r\n        this.wordlist = wordlist;\r\n    }\r\n\r\n\r\n    //output\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Memory.java b/src/Memory.java
+--- a/src/Memory.java	(revision 93f841a06f948ab81c7557ba3c76def14b9ed456)
++++ b/src/Memory.java	(date 1738631866705)
+@@ -15,6 +15,15 @@
+         this.wordlist = wordlist;
+     }
+ 
++    //get single word
++    public int getWordSingle(int index){
++        return wordlist[index];
++    }
++
++    //set single word
++    public void setWordSingle(int index, int value){
++        wordlist[index] = value;
++    }
+ 
+     //output
+ }
+Index: test/UnitTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class UnitTest {\r\n    //machine.run\r\n    //machine memory set\r\n    //\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/test/UnitTest.java b/test/UnitTest.java
+--- a/test/UnitTest.java	(revision 93f841a06f948ab81c7557ba3c76def14b9ed456)
++++ b/test/UnitTest.java	(date 1738631866709)
+@@ -2,4 +2,6 @@
+     //machine.run
+     //machine memory set
+     //
++
++
+ }
+Index: test/MemoryTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/test/MemoryTest.java b/test/MemoryTest.java
+new file mode 100644
+--- /dev/null	(date 1738631866707)
++++ b/test/MemoryTest.java	(date 1738631866707)
+@@ -0,0 +1,26 @@
++import org.junit.jupiter.api.Test;
++
++import static org.junit.jupiter.api.Assertions.*;
++
++class MemoryTest {
++
++    @Test
++    void MemSingleTest(){
++        int a = 2;
++        Memory testmem = new Memory();
++        testmem.setWordSingle(0, a);
++        assertTrue(testmem.getWordSingle(0) == a); //set memory should equal get memory
++    }
++
++    @Test
++    void MemWordListTest(){
++        int[] b = new int[100];
++        for(int x : b){
++            x = 55; //giving each word in memory a nonzero value
++        }
++        Memory testmem = new Memory();
++        testmem.setWordlist(b);
++        assertTrue(testmem.getWordlist() == b); //set memorylist should equal get memorylist
++    }
++
++}
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"883b1958-09a5-4b58-a2a8-6491e4c96c5e\" name=\"Changes\" comment=\"outline -added parameters\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/modules.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/modules.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/CS2450 project.iml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/CS2450 project.iml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2sGlQdgoEmbw7Qzvr7p3z546hZG\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/sofia/IdeaProjects/CS2450 project\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"project.structure.last.edited\": \"Project\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"settings.editor.selected.configurable\": \"preferences.updates\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\sofia\\IdeaProjects\\CS2700 project\\src\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240\" />\r\n        <option value=\"bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"883b1958-09a5-4b58-a2a8-6491e4c96c5e\" name=\"Changes\" comment=\"\" />\r\n      <created>1738089781104</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1738089781104</updated>\r\n      <workItem from=\"1738089782255\" duration=\"1038000\" />\r\n      <workItem from=\"1738285433681\" duration=\"9730000\" />\r\n      <workItem from=\"1738628868101\" duration=\"872000\" />\r\n      <workItem from=\"1738629760264\" duration=\"137000\" />\r\n      <workItem from=\"1738629918198\" duration=\"522000\" />\r\n      <workItem from=\"1738630673352\" duration=\"341000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"create repository\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1738089984311</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1738089984311</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"create repository\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1738288888478</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1738288888478</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"outline\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1738292395612</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1738292395612</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"outline\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1738369805338</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1738369805338</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"outline -added parameters\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1738381234215</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1738381234215</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"create repository\" />\r\n    <MESSAGE value=\"outline\" />\r\n    <MESSAGE value=\"outline -added parameters\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"outline -added parameters\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 93f841a06f948ab81c7557ba3c76def14b9ed456)
++++ b/.idea/workspace.xml	(date 1738632230970)
+@@ -4,10 +4,12 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="883b1958-09a5-4b58-a2a8-6491e4c96c5e" name="Changes" comment="outline -added parameters">
+-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
++    <list default="true" id="883b1958-09a5-4b58-a2a8-6491e4c96c5e" name="Changes" comment="test">
++      <change afterPath="$PROJECT_DIR$/CS2700 project.iml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/test/MemoryTest.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/CS2450 project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CS2450 project.iml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Machine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/test/UnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/UnitTest.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -17,13 +19,25 @@
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
+-        <option value="Class" />
++        <option value="JUnit5 Test Class" />
+       </list>
+     </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
++  <component name="GitHubPullRequestSearchHistory">{
++  &quot;lastFilter&quot;: {
++    &quot;state&quot;: &quot;OPEN&quot;,
++    &quot;assignee&quot;: &quot;apendle1&quot;
++  }
++}</component>
++  <component name="GithubPullRequestsUISettings">{
++  &quot;selectedUrlAndAccountId&quot;: {
++    &quot;url&quot;: &quot;https://github.com/apendle1/CS2450-project.git&quot;,
++    &quot;accountId&quot;: &quot;c1cc2fb0-109e-46e0-b30e-562e692949e7&quot;
++  }
++}</component>
+   <component name="ProjectColorInfo">{
+   &quot;associatedIndex&quot;: 0
+ }</component>
+@@ -33,34 +47,46 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "git-widget-placeholder": "master",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "C:/Users/sofia/IdeaProjects/CS2450 project",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "project.structure.last.edited": "Project",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.2",
+-    "settings.editor.selected.configurable": "preferences.updates",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
++    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
++    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
++    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
++    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
++    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
++    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_directory_selection&quot;: &quot;/Users/austinpendley/Desktop/Group Project SE/CS2450-project/test&quot;,
++    &quot;last_opened_file_path&quot;: &quot;/Users/austinpendley/Desktop/Group Project SE/CS2450-project&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+-    <key name="MoveFile.RECENT_KEYS">
+-      <recent name="C:\Users\sofia\IdeaProjects\CS2700 project\src" />
++    <key name="CreateTestDialog.Recents.Supers">
++      <recent name="" />
++    </key>
++    <key name="CreateTestDialog.RecentsKey">
++      <recent name="" />
+     </key>
+   </component>
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
++        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.24807.4" />
++        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.24807.4" />
+       </set>
+     </attachedChunks>
+   </component>
+@@ -73,11 +99,8 @@
+       <option name="presentableId" value="Default" />
+       <updated>1738089781104</updated>
+       <workItem from="1738089782255" duration="1038000" />
+-      <workItem from="1738285433681" duration="9730000" />
+-      <workItem from="1738628868101" duration="872000" />
+-      <workItem from="1738629760264" duration="137000" />
+-      <workItem from="1738629918198" duration="522000" />
+-      <workItem from="1738630673352" duration="341000" />
++      <workItem from="1738285433681" duration="1323000" />
++      <workItem from="1738434438632" duration="3020000" />
+     </task>
+     <task id="LOCAL-00001" summary="create repository">
+       <option name="closed" value="true" />
+@@ -87,39 +110,7 @@
+       <option name="project" value="LOCAL" />
+       <updated>1738089984311</updated>
+     </task>
+-    <task id="LOCAL-00002" summary="create repository">
+-      <option name="closed" value="true" />
+-      <created>1738288888478</created>
+-      <option name="number" value="00002" />
+-      <option name="presentableId" value="LOCAL-00002" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1738288888478</updated>
+-    </task>
+-    <task id="LOCAL-00003" summary="outline">
+-      <option name="closed" value="true" />
+-      <created>1738292395612</created>
+-      <option name="number" value="00003" />
+-      <option name="presentableId" value="LOCAL-00003" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1738292395612</updated>
+-    </task>
+-    <task id="LOCAL-00004" summary="outline">
+-      <option name="closed" value="true" />
+-      <created>1738369805338</created>
+-      <option name="number" value="00004" />
+-      <option name="presentableId" value="LOCAL-00004" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1738369805338</updated>
+-    </task>
+-    <task id="LOCAL-00005" summary="outline -added parameters">
+-      <option name="closed" value="true" />
+-      <created>1738381234215</created>
+-      <option name="number" value="00005" />
+-      <option name="presentableId" value="LOCAL-00005" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1738381234215</updated>
+-    </task>
+-    <option name="localTasksCounter" value="6" />
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -138,8 +129,6 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="create repository" />
+-    <MESSAGE value="outline" />
+-    <MESSAGE value="outline -added parameters" />
+-    <option name="LAST_COMMIT_MESSAGE" value="outline -added parameters" />
++    <option name="LAST_COMMIT_MESSAGE" value="create repository" />
+   </component>
+ </project>
+\ No newline at end of file
