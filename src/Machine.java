@@ -79,6 +79,29 @@ public class Machine {
         //-Austin
 
         //convert string to int
+        int word_size = 4;
+        int min_value = -9999;
+        int max_value = 9999;
+        int index = 0;
+        Scanner scanner = new Scanner(file);
+
+        while (scanner.hasNextLine() && index < 100) {
+            String line = scanner.nextLine().trim(); //parse through each line
+            try {
+                int value = Integer.parseInt(line); // convert a string in line as ints
+                if (value >= min_value && value <= max_value) {
+                    memory.setWordSingle(index, value);
+                } else {
+                    // catches words longer than 4 numbers
+                    System.err.println("Invalid word size (not " + word_size + ") at index " + index);
+                }
+            } catch (NumberFormatException e) {
+                // catches words that are not numbers
+                System.err.println("Error parsing line " + index + ": " + line);
+            }
+            index++;
+        }
+        scanner.close();
     }
 
     //store
