@@ -1,14 +1,64 @@
 public class Machine {
     //constructor: builds memory
+    Memory memory;
+    int accumulator = 0;
     public Machine(){
-        var memory = new Memory();
+        memory = new Memory();
     }
     //run
     public void run(){
         //while loop
         boolean finished = false;
+        accumulator = 0;
+        int index = 0;
         while(!finished){
-            finished = true; //for testing purposes I've closed this loop until we begin actually developing it (Austin Pendley 2/1/2025)
+            int command = memory.getWordSingle(index);
+            switch(command / 100){
+                case 10:
+                    //read
+                    break;
+                case 11:
+                    //write
+                    break;
+                case 20:
+                    //load
+                    break;
+                case 21:
+                    //store
+                    break;
+                case 30:
+                    //add
+                    break;
+                case 31:
+                    //subtract
+                    break;
+                case 32:
+                    //divide
+                    break;
+                case 33:
+                    //multiply
+                    break;
+                case 40:
+                    //branch
+                    break;
+                case 41:
+                    //branchneg
+                    break;
+                case 42:
+                    //branchzero
+                    break;
+                case 43:
+                    //halt
+                    System.out.println("Halt reached Successfully");
+                    finished = true;
+                    break;
+                default:
+                    System.out.println("Reached invalid line");
+                    finished = true;
+                    //invalid input
+            }
+            //finished = true; //for testing purposes I've closed this loop until we begin actually developing it (Austin Pendley 2/1/2025)
+            index++;
         }
     }
 
@@ -22,6 +72,12 @@ public class Machine {
     }
     //parse
     public void parse(String input){
+        //currently listed as a parse(filename)
+        //could be easier as a parse(File) where File is a java File object
+        //This would make it easier to select a file when running in main
+        //but hey thats just my silly opinion
+        //-Austin
+
         //convert string to int
     }
 
