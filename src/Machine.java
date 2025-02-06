@@ -1,7 +1,12 @@
+import java.util.Scanner;
+
+import static java.sql.Types.NULL;
+
 public class Machine {
     //constructor: builds memory
     Memory memory;
     int accumulator = 0;
+    Scanner scanner = new Scanner(System.in);
     public Machine(){
         memory = new Memory();
     }
@@ -16,15 +21,19 @@ public class Machine {
             switch(command / 100){
                 case 10:
                     //read
+                    read(command);
                     break;
                 case 11:
                     //write
+                    write(command);
                     break;
                 case 20:
                     //load
+                    load(command);
                     break;
                 case 21:
                     //store
+                    store(accumulator);
                     break;
                 case 30:
                     //add
@@ -61,13 +70,38 @@ public class Machine {
             index++;
         }
     }
+    //load
+    public void load(int i){
+        //add the number to the accumulator
+        accumulator = i;
+
+    }
 
     //read(
     public void read(int i){
+        boolean conintueloop = true;
+        while(conintueloop) {
+            System.out.print("Enter a word(4-digit number):");
+            int word = scanner.nextInt();
+            //error trap var word
+            if (String.valueOf(word).length() != 4) {//if not valid input(less than length 4):
+                System.out.println("Invalid word");
+                conintueloop= true;//prompt another number
+            } else {//if valid input:
+                memory.setWordSingle(i, word);
+                conintueloop = false;//send it to memory class
+            }
+
+        }
 
     }
     //write
     public void write(int location){
+        if(location == NULL){//
+            System.out.print("location in memory is NULL");
+        }else{
+            System.out.println("location in memory: " + location);
+        }
 
     }
     //parse
@@ -83,7 +117,11 @@ public class Machine {
 
     //store
     public void store(int location){
-
+        if(accumulator == 0){
+            System.out.print("The accumulator is empty, cannot store");
+        }else{
+            memory.setWordSingle(accumulator, location);
+        }
     }
 
     //add

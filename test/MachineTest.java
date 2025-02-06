@@ -21,5 +21,23 @@ class MachineTest {
         a.memory.setWordSingle(4, 4300);
         a.run();
     }
+    @Test
+    void loadTest(){
+        Machine a = new Machine();
+        a.read(1001);
+
+    }
+    @Test
+    void storeTest(){
+
+    }
+    @Test
+    void readTest(){
+
+    }
+    @Test
+    void writeTest(){
+
+    }
 
 }
