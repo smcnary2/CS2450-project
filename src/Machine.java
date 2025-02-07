@@ -33,7 +33,7 @@ public class Machine {
                     break;
                 case 21:
                     //store
-                    store(accumulator);
+                    store();
                     break;
                 case 30:
                     //add
@@ -74,6 +74,7 @@ public class Machine {
     public void load(int i){
         //add the number to the accumulator
         accumulator = i;
+        System.out.println("Loaded " + accumulator+" into accumulator");
 
     }
 
@@ -97,10 +98,11 @@ public class Machine {
     }
     //write
     public void write(int location){
-        if(location == NULL){//
+        int word = memory.getWordSingle(Math.abs(location%100));
+        if(word == NULL){//
             System.out.print("location in memory is NULL");
         }else{
-            System.out.println("location in memory: " + location);
+            System.out.println("location in memory: " + word);
         }
 
     }
@@ -116,11 +118,15 @@ public class Machine {
     }
 
     //store
-    public void store(int location){
+    public void store(){
         if(accumulator == 0){
             System.out.print("The accumulator is empty, cannot store");
         }else{
-            memory.setWordSingle(accumulator, location%100);
+            int index= accumulator%100;
+            if(index <0){
+                index = Math.abs(index);
+            }
+            memory.setWordSingle(index, accumulator);
         }
     }
 
