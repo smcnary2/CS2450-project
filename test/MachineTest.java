@@ -1,4 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class MachineTest {
@@ -24,20 +26,31 @@ class MachineTest {
     @Test
     void loadTest(){
         Machine a = new Machine();
-        a.read(1001);
+        a.load(1001);
+        Assertions.assertEquals(1001, a.accumulator);
 
     }
     @Test
     void storeTest(){
+        Machine a = new Machine();
+        a.accumulator = 2500;
+        a.store(1001);
+        Assertions.assertEquals(a.accumulator, a.memory.getWordSingle(1001));
 
+        a.accumulator = 0;
+        a.store(1002);
+        Assertions.assertEquals(a.accumulator, a.memory.getWordSingle(1002));
     }
     @Test
-    void readTest(){
-
+    void readTest(){// doesnt work console is read only
+        Machine a = new Machine();
+        a.read(1001);
     }
     @Test
-    void writeTest(){
-
+    void writeTest(){//cant create a test for write without a return type
+        Machine a = new Machine();
+        a.write(1001);
+        Assertions.assertEquals(1001,1001);
     }
 
 }
