@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class Machine {
     //constructor: builds memory
     Memory memory;
@@ -62,7 +66,7 @@ public class Machine {
         }
     }
 
-    //read(
+    //read
     public void read(int i){
 
     }
@@ -71,13 +75,12 @@ public class Machine {
 
     }
     //parse
-    public void parse(String input){
+    public void parse(File file) throws FileNotFoundException {
         //currently listed as a parse(filename)
         //could be easier as a parse(File) where File is a java File object
         //This would make it easier to select a file when running in main
         //but hey thats just my silly opinion
         //-Austin
-
         //convert string to int
         int word_size = 4;
         int min_value = -9999;
@@ -105,27 +108,35 @@ public class Machine {
     }
 
     //store
-    public void store(int location){
+    public void store(int mem_index){
 
     }
 
-    //add
-    public void add(int location1, int location2){
 
+    public void add(int mem_index){
+        //add - adds word from location in memory with accumulator
+        // leaves result in accumulator
+        accumulator += mem_index;
     }
 
-    //subtract
-    public void subtract(int location1, int location2){
 
+    public void subtract(int mem_index){
+        //subtract - subtracts word from location in memory with accumulator
+        // leaves result in accumulator
+        accumulator -= mem_index;
     }
 
-    //divide
-    public void divide(int location1, int location2){
 
+    public void divide(int mem_index){
+        //divide - divides word from location in memory with accumulator
+        // leaves result in accumulator
+        accumulator /= mem_index;
     }
-    //multiply
-    public void multiply(int location1, int location2){
 
+    public void multiply(int mem_index){
+        //multiply - multiplies word from location in memory with accumulator
+        // leaves result in accumulator
+        accumulator *= mem_index;
     }
     //branch
     public void branch(){
