@@ -41,11 +41,7 @@ class MachineTest {
         a.store(1002);
         Assertions.assertEquals(a.accumulator, a.memory.getWordSingle(1002));
     }
-    @Test
-    void readTest(){// doesnt work console is read only
-        Machine a = new Machine();
-        a.read(1001);
-    }
+
     @Test
     void writeTest(){//cant create a test for write without a return type
         Machine a = new Machine();

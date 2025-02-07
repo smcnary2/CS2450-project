@@ -86,7 +86,7 @@ public class Machine {
             //error trap var word
             if (String.valueOf(word).length() != 4) {//if not valid input(less than length 4):
                 System.out.println("Invalid word");
-                conintueloop= true;//prompt another number
+                conintueloop = true;//prompt another number
             } else {//if valid input:
                 memory.setWordSingle(i, word);
                 conintueloop = false;//send it to memory class
