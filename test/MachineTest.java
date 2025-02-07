@@ -3,6 +3,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.Scanner;
+
 class MachineTest {
 
     @Test
@@ -38,6 +42,29 @@ class MachineTest {
 
         a.load(+2002);
         Assertions.assertEquals(+2002, a.accumulator);
+    }
+
+    @Test
+    void readTest(){
+        Machine a = new Machine();
+        // Simulating System.in for testing
+        String word = "+1023";
+        InputStream inputStream = new ByteArrayInputStream(word.getBytes());
+        Scanner scanner = new Scanner(inputStream);
+
+        a.read(scanner);
+        Assertions.assertEquals(1023, a.memory.getWordSingle(23));
+
+
+    }
+    @Test
+    void readNegPosTest(){
+        Machine a = new Machine();
+        String word = "-1023";
+        InputStream inputStream = new ByteArrayInputStream(word.getBytes());
+        Scanner scanner = new Scanner(inputStream);
+        a.read(scanner);
+        Assertions.assertEquals(-1023, a.memory.getWordSingle(23));
     }
     @Test
     void storeTest(){

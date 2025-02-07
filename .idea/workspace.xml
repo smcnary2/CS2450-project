@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8cb913ef-69a1-4392-9269-2feaa209cc70" name="Changes" comment="">
+    <list default="true" id="8cb913ef-69a1-4392-9269-2feaa209cc70" name="Changes" comment="fixed and unittest for load, store and write">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Machine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/MachineTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/MachineTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/UnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,22 +17,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "smcnary2"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;smcnary2&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/smcnary2/CS2450-project.git",
-    "accountId": "58e0caea-09f1-46a8-9549-0da203f87c00"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/smcnary2/CS2450-project.git&quot;,
+    &quot;accountId&quot;: &quot;58e0caea-09f1-46a8-9549-0da203f87c00&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 0
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2shGPhwjyRHm87P1gF6HNIYVpYg" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -41,6 +40,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.MachineTest.readNegPosTest.executor": "Debug",
+    "JUnit.MachineTest.readTest.executor": "Debug",
     "JUnit.MachineTest.storeNegPosTest.executor": "Run",
     "JUnit.MachineTest.writeNegPosTest.executor": "Run",
     "JUnit.MachineTest.writeTest.executor": "Run",
@@ -56,7 +57,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.MachineTest.loadNegPosTest">
+  <component name="RunManager" selected="JUnit.MachineTest.readTest">
     <configuration name="MachineTest.loadNegPosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS2700 project" />
       <option name="PACKAGE_NAME" value="" />
@@ -67,11 +68,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MachineTest.storeNegPosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MachineTest.readNegPosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS2700 project" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MachineTest" />
-      <option name="METHOD_NAME" value="storeNegPosTest" />
+      <option name="METHOD_NAME" value="readNegPosTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MachineTest.readTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS2700 project" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MachineTest" />
+      <option name="METHOD_NAME" value="readTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -99,10 +110,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MachineTest.readTest" />
+        <item itemvalue="JUnit.MachineTest.readNegPosTest" />
         <item itemvalue="JUnit.MachineTest.loadNegPosTest" />
         <item itemvalue="JUnit.MachineTest.writeTest" />
         <item itemvalue="JUnit.MachineTest.writeNegPosTest" />
-        <item itemvalue="JUnit.MachineTest.storeNegPosTest" />
       </list>
     </recent_temporary>
   </component>
@@ -123,29 +135,89 @@
       <option name="presentableId" value="Default" />
       <updated>1738900372535</updated>
       <workItem from="1738900375717" duration="1475000" />
+      <workItem from="1738904175488" duration="276000" />
+      <workItem from="1738960332601" duration="4051000" />
     </task>
+    <task id="LOCAL-00001" summary="fixed and unittest for load, store and write">
+      <option name="closed" value="true" />
+      <created>1738904224955</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1738904224955</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fixed and unittest for load, store and write" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed and unittest for load, store and write" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Machine.java</url>
-          <line>123</line>
+          <line>120</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Machine.java</url>
-          <line>127</line>
+          <line>124</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Machine.java</url>
-          <line>124</line>
+          <line>121</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/MachineTest.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/MachineTest.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/MachineTest.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/MachineTest.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Machine.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Machine.java</url>
+          <line>86</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Machine.java</url>
+          <line>90</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Machine.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Machine.java</url>
+          <line>87</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Memory.java</url>

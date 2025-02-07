@@ -21,7 +21,7 @@ public class Machine {
             switch(command / 100){
                 case 10:
                     //read
-                    read(command);
+                    read(scanner);
                     break;
                 case 11:
                     //write
@@ -79,21 +79,17 @@ public class Machine {
     }
 
     //read(
-    public void read(int i){
-        boolean conintueloop = true;
-        while(conintueloop) {
+    public void read(Scanner s){
             System.out.print("Enter a word(4-digit number):");
-            int word = scanner.nextInt();
+            int word = s.nextInt();
             //error trap var word
-            if (String.valueOf(word).length() != 4) {//if not valid input(less than length 4):
+            if (String.valueOf(word).length() > 6 &&String.valueOf(word).length() <4) {//if not valid input(less than length 4):
                 System.out.println("Invalid word");
-                conintueloop = true;//prompt another number
-            } else {//if valid input:
-                memory.setWordSingle(i, word);
-                conintueloop = false;//send it to memory class
+                //prompt another number
+            }else {//if valid input:
+                memory.setWordSingle(Math.abs(word%100), word);
+               //send it to memory class
             }
-
-        }
 
     }
     //write
