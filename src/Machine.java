@@ -120,7 +120,7 @@ public class Machine {
         if(accumulator == 0){
             System.out.print("The accumulator is empty, cannot store");
         }else{
-            memory.setWordSingle(accumulator, location);
+            memory.setWordSingle(accumulator, location%100);
         }
     }
 
