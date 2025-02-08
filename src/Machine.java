@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 import java.util.Scanner;
 
 import static java.sql.Types.NULL;
@@ -37,15 +41,19 @@ public class Machine {
                     break;
                 case 30:
                     //add
+                    add(index);
                     break;
                 case 31:
                     //subtract
+                    subtract(index);
                     break;
                 case 32:
                     //divide
+                    divide(index);
                     break;
                 case 33:
                     //multiply
+                    multiply(index);
                     break;
                 case 40:
                     //branch
@@ -77,7 +85,7 @@ public class Machine {
 
     }
 
-    //read(
+    //read
     public void read(int i){
         boolean conintueloop = true;
         while(conintueloop) {
@@ -105,14 +113,36 @@ public class Machine {
 
     }
     //parse
-    public void parse(String input){
+    public void parse(File file) throws FileNotFoundException {
         //currently listed as a parse(filename)
         //could be easier as a parse(File) where File is a java File object
         //This would make it easier to select a file when running in main
         //but hey thats just my silly opinion
         //-Austin
-
         //convert string to int
+        int word_size = 4;
+        int min_value = -9999;
+        int max_value = 9999;
+        int index = 0;
+        Scanner scanner = new Scanner(file);
+
+        while (scanner.hasNextLine() && index < 100) {
+            String line = scanner.nextLine().trim(); //parse through each line
+            try {
+                int value = Integer.parseInt(line); // convert a string in line as ints
+                if (value >= min_value && value <= max_value) {
+                    memory.setWordSingle(index, value);
+                } else {
+                    // catches words longer than 4 numbers
+                    System.err.println("Invalid word size (not " + word_size + ") at index " + index);
+                }
+            } catch (NumberFormatException e) {
+                // catches words that are not numbers
+                System.err.println("Error parsing line " + index + ": " + line);
+            }
+            index++;
+        }
+        scanner.close();
     }
 
     //store
@@ -124,23 +154,31 @@ public class Machine {
         }
     }
 
-    //add
-    public void add(int location1, int location2){
 
+    public void add(int mem_index){
+        //add - adds word from location in memory with accumulator
+        // leaves result in accumulator
+        accumulator += mem_index;
     }
 
-    //subtract
-    public void subtract(int location1, int location2){
 
+    public void subtract(int mem_index){
+        //subtract - subtracts word from location in memory with accumulator
+        // leaves result in accumulator
+        accumulator -= mem_index;
     }
 
-    //divide
-    public void divide(int location1, int location2){
 
+    public void divide(int mem_index){
+        //divide - divides word from location in memory with accumulator
+        // leaves result in accumulator
+        accumulator /= mem_index;
     }
-    //multiply
-    public void multiply(int location1, int location2){
 
+    public void multiply(int mem_index){
+        //multiply - multiplies word from location in memory with accumulator
+        // leaves result in accumulator
+        accumulator *= mem_index;
     }
     //branch
     public void branch(){
