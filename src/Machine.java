@@ -97,10 +97,10 @@ public class Machine {
     public void read(int i){
         boolean conintueloop = true;
         while(conintueloop) {
-            System.out.print("Enter a word(4-digit number):");
+            System.out.print("Enter a word (Max 4-digit number):");
             int word = scanner.nextInt();
             //error trap var word
-            if (String.valueOf(Math.abs(word)).length() != 4) {//if not valid input(less than length 4):
+            if (String.valueOf(Math.abs(word)).length() <= 4) {//if not valid input(less than length 4):
                 System.out.println("Invalid word");
                 conintueloop = true;//prompt another number
             } else {//if valid input:
@@ -182,15 +182,15 @@ public class Machine {
     }
     //branch
     public int branch(int i){
-        return i % 100;
+        return (i % 100) - 1;
     }
 
     //branchneg
     public int branchneg(int i){
-        return accumulator < 0 ? i : -1;
+        return (accumulator < 0 ? i : -1) - 1;
     }
     //branchzero
     public int branchzero(int i){
-        return accumulator == 0 ? i : -1;
+        return (accumulator == 0 ? i : -1) - 1;
     }
 }
