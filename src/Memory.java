@@ -24,6 +24,4 @@ public class Memory {
     public void setWordSingle(int index, int value){
         wordlist[index] = value;
     }
-
-    //output
 }
