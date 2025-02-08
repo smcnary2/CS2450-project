@@ -22,47 +22,55 @@ public class Machine {
         int index = 0;
         while(!finished){
             int command = memory.getWordSingle(index);
+            int argument = command % 100;
             switch(command / 100){
                 case 10:
                     //read
-                    read(command);
+                    read(argument);
                     break;
                 case 11:
                     //write
-                    write(command);
+                    write(argument);
                     break;
                 case 20:
                     //load
-                    load(command);
+                    load(argument);
                     break;
                 case 21:
                     //store
-                    store(accumulator);
+                    store(argument);
                     break;
                 case 30:
                     //add
-                    add(index);
+                    add(argument);
                     break;
                 case 31:
                     //subtract
-                    subtract(index);
+                    subtract(argument);
                     break;
                 case 32:
                     //divide
-                    divide(index);
+                    divide(argument);
                     break;
                 case 33:
                     //multiply
-                    multiply(index);
+                    multiply(argument);
                     break;
                 case 40:
                     //branch
+                    index = branch(argument);
                     break;
                 case 41:
                     //branchneg
+                    if(branchneg(argument) > 0){
+                        index = branch(argument);
+                    }
                     break;
                 case 42:
                     //branchzero
+                    if(branchzero(argument) > 0){
+                        index = branch(argument);
+                    }
                     break;
                 case 43:
                     //halt
@@ -78,11 +86,11 @@ public class Machine {
             index++;
         }
     }
+
     //load
     public void load(int i){
         //add the number to the accumulator
-        accumulator = i;
-
+        accumulator = memory.getWordSingle(i);
     }
 
     //read
@@ -92,7 +100,7 @@ public class Machine {
             System.out.print("Enter a word(4-digit number):");
             int word = scanner.nextInt();
             //error trap var word
-            if (String.valueOf(word).length() != 4) {//if not valid input(less than length 4):
+            if (String.valueOf(Math.abs(word)).length() != 4) {//if not valid input(less than length 4):
                 System.out.println("Invalid word");
                 conintueloop = true;//prompt another number
             } else {//if valid input:
@@ -103,23 +111,18 @@ public class Machine {
         }
 
     }
+
     //write
     public void write(int location){
         if(location == NULL){//
             System.out.print("location in memory is NULL");
         }else{
-            System.out.println("location in memory: " + location);
+            System.out.println("location " + location + " in memory: " + memory.getWordSingle(location));
         }
-
     }
+
     //parse
     public void parse(File file) throws FileNotFoundException {
-        //currently listed as a parse(filename)
-        //could be easier as a parse(File) where File is a java File object
-        //This would make it easier to select a file when running in main
-        //but hey thats just my silly opinion
-        //-Austin
-        //convert string to int
         int word_size = 4;
         int min_value = -9999;
         int max_value = 9999;
@@ -147,57 +150,47 @@ public class Machine {
 
     //store
     public void store(int location){
-        if(accumulator == 0){
-            System.out.print("The accumulator is empty, cannot store");
-        }else{
-            memory.setWordSingle(accumulator, location%100);
-        }
+        memory.setWordSingle(location, accumulator);
     }
 
 
     public void add(int mem_index){
         //add - adds word from location in memory with accumulator
         // leaves result in accumulator
-        accumulator += mem_index;
+        //accumulator += mem_index
+        accumulator += memory.getWordSingle(mem_index); // updated just now
     }
 
 
     public void subtract(int mem_index){
         //subtract - subtracts word from location in memory with accumulator
         // leaves result in accumulator
-        accumulator -= mem_index;
+        accumulator -= memory.getWordSingle(mem_index);
     }
 
 
     public void divide(int mem_index){
         //divide - divides word from location in memory with accumulator
         // leaves result in accumulator
-        accumulator /= mem_index;
+        accumulator /= memory.getWordSingle(mem_index);
     }
 
     public void multiply(int mem_index){
         //multiply - multiplies word from location in memory with accumulator
         // leaves result in accumulator
-        accumulator *= mem_index;
+        accumulator *= memory.getWordSingle(mem_index);
     }
     //branch
-    public void branch(){
-
+    public int branch(int i){
+        return i % 100;
     }
 
     //branchneg
-    public void branchneg(){
-
+    public int branchneg(int i){
+        return accumulator < 0 ? i : -1;
     }
     //branchzero
-    public void branchzero(){
-
+    public int branchzero(int i){
+        return accumulator == 0 ? i : -1;
     }
-    //halt
-    public void halt(){
-
-    }
-
-    //set(only for testing)
-    //get(only for testing)
 }
