@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="883b1958-09a5-4b58-a2a8-6491e4c96c5e" name="Changes" comment="create repository">
+    <list default="true" id="883b1958-09a5-4b58-a2a8-6491e4c96c5e" name="Changes" comment="I added my unit tests for all arithmetic methods.">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_8_25,_10_37 PM_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_8_25__10_37PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Machine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/UnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/UnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/MachineTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/MachineTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,12 +32,12 @@
     &quot;assignee&quot;: &quot;apendle1&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Sebxs13/CS2450-project.git",
-    "accountId": "3b08e349-62c3-4180-a49f-68ece65c06d8"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Sebxs13/CS2450-project.git&quot;,
+    &quot;accountId&quot;: &quot;3b08e349-62c3-4180-a49f-68ece65c06d8&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -110,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738089984311</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added code for parse function and implemented arithmetic functions.">
+      <option name="closed" value="true" />
+      <created>1738973253453</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1738973253453</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,6 +140,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create repository" />
-    <option name="LAST_COMMIT_MESSAGE" value="create repository" />
+    <MESSAGE value="Added code for parse function and implemented arithmetic functions." />
+    <MESSAGE value="I added my unit tests for all arithmetic methods." />
+    <option name="LAST_COMMIT_MESSAGE" value="I added my unit tests for all arithmetic methods." />
   </component>
 </project>

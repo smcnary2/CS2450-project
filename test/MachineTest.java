@@ -182,4 +182,75 @@ class MachineTest {
     }
 
 
+    @Test
+    void testAdd_PositiveNumbers() {
+        Machine a = new Machine();
+        a.accumulator = 10;
+        a.memory.setWordSingle(0, 5);
+        a.add(0);
+        assertEquals(15, a.accumulator);
+    }
+
+    @Test
+    void testAdd_NegativeNumbers() {
+        Machine a = new Machine();
+        a.accumulator = 10;
+        a.memory.setWordSingle(1, -3);
+        a.add(1);
+        assertEquals(7, a.accumulator);
+    }
+
+    @Test
+    void testSubtract_PositiveNumbers() {
+        Machine a = new Machine();
+        a.accumulator = 20;
+        a.memory.setWordSingle(0, 5);
+        a.subtract(0);
+        assertEquals(15, a.accumulator);
+    }
+
+    @Test
+    void testSubtract_NegativeNumbers() {
+        Machine a = new Machine();
+        a.accumulator = 10;
+        a.memory.setWordSingle(1, -3);
+        a.subtract(1);
+        assertEquals(13, a.accumulator);
+    }
+
+    @Test
+    void testDivide_PositiveNumbers() {
+        Machine a = new Machine();
+        a.accumulator = 20;
+        a.memory.setWordSingle(0, 5);
+        a.divide(0);
+        assertEquals(4, a.accumulator);
+    }
+
+    @Test
+    void testDivide_ByZero() {
+        Machine a = new Machine();
+        a.accumulator = 10;
+        a.memory.setWordSingle(1, 0);
+        assertThrows(ArithmeticException.class, () -> a.divide(1));
+    }
+
+    @Test
+    void testMultiply_PositiveNumbers() {
+        Machine a = new Machine();
+        a.accumulator = 3;
+        a.memory.setWordSingle(0, 4);
+        a.multiply(0);
+        assertEquals(12, a.accumulator);
+    }
+
+    @Test
+    void testMultiply_WithZero() {
+        Machine a = new Machine();
+        a.accumulator = 7;
+        a.memory.setWordSingle(1, 0);
+        a.multiply(1);
+        assertEquals(0, a.accumulator);
+    }
+
 }
