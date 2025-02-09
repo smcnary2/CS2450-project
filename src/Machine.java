@@ -100,7 +100,7 @@ public class Machine {
             System.out.print("Enter a word (Max 4-digit number):");
             int word = s.nextInt();
             //error trap var word
-            if (String.valueOf(Math.abs(word)).length() <= 4) {//if not valid input(less than length 4):
+            if (!(String.valueOf(Math.abs(word)).length() <= 4)) {//if not valid input(less than length 4):
                 System.out.println("Invalid word");
                 conintueloop = true;//prompt another number
             } else {//if valid input:
@@ -118,7 +118,7 @@ public class Machine {
             System.out.print("location in memory is NULL");
             return false;
         }else{
-            System.out.println("location " + location + " in memory: " + memory.getWordSingle(Math.abs(location));
+            System.out.println("location " + location + " in memory: " + memory.getWordSingle(Math.abs(location)));
             return true;
         }
     }
