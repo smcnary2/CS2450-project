@@ -3,6 +3,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.Scanner;
+
 
 class MachineTest {
 
@@ -120,17 +124,29 @@ class MachineTest {
     }
 
     @Test
-    void branchTest(){
+    void branchTest2(){
         Machine a = new Machine();
-        a.memory.setWordSingle(0, 4002);//skip to line 2
-        a.memory.setWordSingle(1, 3000);//add the value of line zero (should be skipped)
-        a.memory.setWordSingle(2, 4300);//halt
+        a.memory.setWordSingle(0, 3000);//add value of line zero to accumulator
+        a.memory.setWordSingle(1, 4003);//skip to line 3
+        a.memory.setWordSingle(2, 3100);//subtract value of line zero (should be skipped)
+        a.memory.setWordSingle(3, 4300);//halt
+        a.run();
+        Assertions.assertEquals(3000, a.accumulator);
+    }
+
+    @Test
+    void branchNegTest(){
+        Machine a = new Machine();
+        a.memory.setWordSingle(0, 4102);//if neg branch to 2 (should not branch)
+        a.memory.setWordSingle(1, 4300);//halt
+        a.memory.setWordSingle(2, 2000);//load value of memory location zero to memory (shouldn't reach)
+        a.memory.setWordSingle(3, 4300);//halt
         a.run();
         Assertions.assertEquals(0, a.accumulator);
     }
 
     @Test
-    void branchNegTest(){
+    void branchNegTest2(){
         Machine a = new Machine();
         a.memory.setWordSingle(90, 20);//var1
         a.memory.setWordSingle(91, -50);//var2
@@ -153,5 +169,17 @@ class MachineTest {
         a.run();
         Assertions.assertEquals(0, a.accumulator);
     }
+
+    @Test
+    void branchZeroTest2(){
+        Machine a = new Machine();
+        a.memory.setWordSingle(0, 4202);//if zero branch to 2 (should branch)
+        a.memory.setWordSingle(1, 4300);//halt
+        a.memory.setWordSingle(2, 2000);//load value of memory location zero to memory
+        a.memory.setWordSingle(3, 4300);//halt
+        a.run();
+        Assertions.assertEquals(4202, a.accumulator);
+    }
+
 
 }
