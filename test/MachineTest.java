@@ -25,6 +25,28 @@ class MachineTest {
         a.run();
     }
     @Test
+    void readTest(){
+        Machine a = new Machine();
+        // Simulating System.in for testing
+        String word = "+1023";
+        InputStream inputStream = new ByteArrayInputStream(word.getBytes());
+        Scanner scanner = new Scanner(inputStream);
+
+        a.read(23,scanner);
+        Assertions.assertEquals(1023, a.memory.getWordSingle(23));
+
+
+    }
+    @Test
+    void readNegPosTest(){
+        Machine a = new Machine();
+        String word = "-1023";
+        InputStream inputStream = new ByteArrayInputStream(word.getBytes());
+        Scanner scanner = new Scanner(inputStream);
+        a.read(23,scanner);
+        Assertions.assertEquals(-1023, a.memory.getWordSingle(23));
+    }
+    @Test
     void loadTest(){
         Machine a = new Machine();
         a.memory.setWordSingle(1, 3000);
