@@ -68,8 +68,8 @@ class MachineTest {
     @Test
     void writeTest(){//cant create a test for write without a return type
         Machine a = new Machine();
-        a.write(01);
-        Assertions.assertEquals(1001,1001);
+        boolean result1 = a.write(01);
+        Assertions.assertEquals(true, result1);
     }
 
     @Test
