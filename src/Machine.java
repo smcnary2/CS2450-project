@@ -26,7 +26,7 @@ public class Machine {
             switch(command / 100){
                 case 10:
                     //read
-                    read(argument);
+                    read(argument, scanner);
                     break;
                 case 11:
                     //write
@@ -94,11 +94,11 @@ public class Machine {
     }
 
     //read
-    public void read(int i){
+    public void read(int i, Scanner s){
         boolean conintueloop = true;
         while(conintueloop) {
             System.out.print("Enter a word (Max 4-digit number):");
-            int word = scanner.nextInt();
+            int word = s.nextInt();
             //error trap var word
             if (String.valueOf(Math.abs(word)).length() <= 4) {//if not valid input(less than length 4):
                 System.out.println("Invalid word");
@@ -113,11 +113,13 @@ public class Machine {
     }
 
     //write
-    public void write(int location){
+    public boolean write(int location){
         if(location == NULL){//
             System.out.print("location in memory is NULL");
+            return false;
         }else{
             System.out.println("location " + location + " in memory: " + memory.getWordSingle(location));
+            return true;
         }
     }
 
