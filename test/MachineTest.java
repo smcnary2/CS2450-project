@@ -54,6 +54,21 @@ class MachineTest {
         Assertions.assertEquals(3000, a.accumulator);
     }
     @Test
+    void loadTestExtended(){
+        Machine a = new Machine();
+        a.memory.setWordSingle(0, 3000);
+        a.load(0);
+        Assertions.assertEquals(3000, a.accumulator);
+        a.memory.setWordSingle(1, 3100);
+        a.memory.setWordSingle(2, 3200);
+        a.memory.setWordSingle(3, 3301);
+
+        a.load(1);
+        a.load(2);
+        a.load(3);
+        Assertions.assertEquals(3301, a.accumulator);
+    }
+    @Test
     void storeTest(){
         Machine a = new Machine();
         a.accumulator = 2500;
@@ -64,12 +79,29 @@ class MachineTest {
         a.store(02);
         Assertions.assertEquals(a.accumulator, a.memory.getWordSingle(02));
     }
+    @Test
+    void storeNegPosTest(){
+        Machine a = new Machine();
+        a.accumulator = +2500;
+        a.store(00);
+        Assertions.assertEquals(a.accumulator, a.memory.getWordSingle(0));
+
+        a.accumulator = -2501;
+        a.store(01);
+        Assertions.assertEquals(a.accumulator, a.memory.getWordSingle(1));
+    }
+
 
     @Test
     void writeTest(){//cant create a test for write without a return type
         Machine a = new Machine();
         boolean result1 = a.write(01);
         Assertions.assertEquals(true, result1);
+    }
+    void writeTestNeg(){
+        Machine a = new Machine();
+        boolean result1 = a.write(-1);
+        Assertions.assertEquals(true,result1);
     }
 
     @Test
