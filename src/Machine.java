@@ -118,7 +118,7 @@ public class Machine {
             System.out.print("location in memory is NULL");
             return false;
         }else{
-            System.out.println("location " + location + " in memory: " + memory.getWordSingle(location));
+            System.out.println("location " + location + " in memory: " + memory.getWordSingle(Math.abs(location));
             return true;
         }
     }
